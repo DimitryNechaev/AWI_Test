@@ -8,12 +8,12 @@ namespace PartA
     {
         /// <summary>
         /// Return the Nth element from the tail.
-        /// This algoryhm is not perfect for any decent N (about more than 10)
+        /// This algoryhm is not perfect for large N. It will consume N*4 (x32) or N*8 (x64) bytes of memory.
         /// </summary>
         /// <param name="item">Any entry point into the list</param>
         /// <param name="n">Items to count back from the end</param>
         /// <param name="maxListLength">Expected max length of the list, default 1000</param>
-        /// <returns>Nth element from the tail</returns>
+        /// <returns>Nth element from the tail, or null if list is shorter than N elements</returns>
         internal static LinkedListItem GetNthElementFromTheTail(LinkedListItem item, int n, int maxListLength = 1000)
         {
             // protect against getting into endless loop
@@ -25,25 +25,26 @@ namespace PartA
 
             // this is the stack of the last N elements
             var lastN = new LinkedListItem[n];
+            var pointer = 0;
 
-            while (item.Next != null)
+            while (item != null)
             {
-                // shift the stack
-                for (int i = 0; i < n - 1; i++) 
-                    lastN[i] = lastN[i + 1];
-                // puch current item into the stack
-                lastN[n - 1] = item;
+                // replace latest in the stack with the value
+                lastN[pointer % n] = item;
+                // stack pointer -> {0..n-1}
+                pointer++;
 
                 item = item.Next;
                 if (item == checkpoint)
                     throw new LinkedListCircularReferenceException();
 
-                maxListLength--;
-                if (maxListLength == 0)
+                if (pointer > maxListLength)
                     throw new LinkedListPossibleCircularReferenceException();
             }
 
-            return lastN[0];
+            // return item remembered n turns ago
+            // or null if we had less then n items in the list
+            return pointer < n ? null : lastN[(pointer - n) % n];
         }
 
         /// <summary>
