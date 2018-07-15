@@ -51,8 +51,9 @@
     <Reference Include="System.Core" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="UnitTest1.cs" />
+    <Compile Include="UnitTestPuzzle1.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="UnitTestPuzzle2.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />

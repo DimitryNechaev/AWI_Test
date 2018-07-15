@@ -5,7 +5,7 @@ using PartA;
 namespace PartATest
 {
     [TestClass]
-    public class UnitTest1
+    public class UnitTestPuzzle1
     {
         // return first item of the list of N
         LinkedListItem GenerateList(int n)
