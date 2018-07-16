@@ -1,16 +1,10 @@
 import * as React from 'react';
 import { render } from 'react-dom';
-import App from './App';
+import Glossary from './components/Glossary';
 
-// hot reloading
-declare let module: any
+//import 'bootstrap/dist/css/bootstrap.min.css';
 
 render(
-    <App message="World3" />,
+    <Glossary/>,
     document.getElementById('root'),
 );
-
-// hot reloading
-if (module.hot) {
-    module.hot.accept();
- }

@@ -17,10 +17,8 @@ module.exports = {
     },
     module: {
         rules: [
-            {
-                test: /\.(ts|tsx)$/,
-                loader: 'ts-loader',
-            },
+            { test: /\.(ts|tsx)$/, loader: 'ts-loader' },
+            { test: /\.css$/, loader: 'style-loader!css-loader' },
             { enforce: "pre", test: /\.js$/, loader: "source-map-loader" }
         ],
     },

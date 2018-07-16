@@ -2,7 +2,7 @@ declare namespace GlossaryModel
 {
     interface IGlossaryRecord
     {
-        Term: string;
-        Definition: string;
+        term: string;
+        definition: string;
     }
 }

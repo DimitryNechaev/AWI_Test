@@ -9,23 +9,23 @@ namespace PartB_Repository
 {
     public class Repository: IRepository
     {
-        private readonly string _csvFilename;
+        private readonly string _repoFilename;
 
-        public Repository(string csvFileName)
+        public Repository(string repoFileName)
         {
-            _csvFilename = csvFileName;
+            _repoFilename = repoFileName;
         }
 
         private List<TermModel> ReadFile()
         {
-            var content = File.ReadAllText(_csvFilename);
+            var content = File.ReadAllText(_repoFilename);
             return JsonConvert.DeserializeObject<List<TermModel>>(content);
         }
 
         private void WriteFile(List<TermModel> list)
         {
             var json = JsonConvert.SerializeObject(list);
-            File.WriteAllText(_csvFilename, json);
+            File.WriteAllText(_repoFilename, json);
         }
 
         delegate void UpdateListAction(List<TermModel> list);
