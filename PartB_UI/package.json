@@ -1,0 +1,17 @@
+{
+  "name": "part_b_ui",
+  "version": "1.0.0",
+  "description": "UI for Glossary API",
+  "main": "index.js",
+  "scripts": {
+    "test": "",
+    "build": "webpack"
+  },
+  "author": "Dmitry Nechaev",
+  "license": "ISC",
+  "devDependencies": {
+    "awesome-typescript-loader": "^5.2.0",
+    "typescript": "^2.9.2",
+    "webpack-cli": "^3.0.8"
+  }
+}
